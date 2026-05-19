@@ -13,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Hiddenconcerts",
-  description: "Hiddenconcerts",
+  title: "Hidden Concerts",
+  description:
+    "Intimate house concerts in Reykjavík with Icelandic musicians.",
 };
 
 export default function RootLayout({

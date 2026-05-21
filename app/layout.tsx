@@ -16,6 +16,10 @@ export const metadata: Metadata = {
   title: "Hidden Concerts",
   description:
     "Intimate house concerts in Reykjavík with Icelandic musicians.",
+  icons: {
+    icon: [{ url: "/images/pngegg.png", type: "image/png" }],
+    apple: [{ url: "/images/pngegg.png", type: "image/png" }],
+  },
 };
 
 export default function RootLayout({
@@ -28,7 +32,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="h-full overflow-hidden">{children}</body>
     </html>
   );
 }

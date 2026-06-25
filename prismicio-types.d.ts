@@ -73,7 +73,78 @@ interface DateDocumentData {
  */
 export type DateDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<DateDocumentData>, "date", Lang>;
 
-export type AllDocumentTypes = DateDocument;
+type ImageDocumentDataSlicesSlice = never
+
+/**
+ * Content for image documents
+ */
+interface ImageDocumentData {
+	/**
+	 * image field in *image*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: image.image
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	image: prismic.ImageField<never>;
+	
+	/**
+	 * Slice Zone field in *image*
+	 *
+	 * - **Field Type**: Slice Zone
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: image.slices[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/slices
+	 */
+	slices: prismic.SliceZone<ImageDocumentDataSlicesSlice>;/**
+	 * Meta Title field in *image*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: A title of the page used for social media and search engines
+	 * - **API ID Path**: image.meta_title
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	meta_title: prismic.KeyTextField;
+	
+	/**
+	 * Meta Description field in *image*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: A brief summary of the page
+	 * - **API ID Path**: image.meta_description
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	meta_description: prismic.KeyTextField;
+	
+	/**
+	 * Meta Image field in *image*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: image.meta_image
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * image document from Prismic
+ *
+ * - **API ID**: `image`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ImageDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<ImageDocumentData>, "image", Lang>;
+
+export type AllDocumentTypes = DateDocument | ImageDocument;
 
 declare module "@prismicio/client" {
 	interface CreateClient {
@@ -92,6 +163,9 @@ declare module "@prismicio/client" {
 		export type {
 			DateDocument,
 			DateDocumentData,
+			ImageDocument,
+			ImageDocumentData,
+			ImageDocumentDataSlicesSlice,
 			AllDocumentTypes
 		}
 	}

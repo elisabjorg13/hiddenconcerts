@@ -1,4 +1,9 @@
 {
   "repositoryName": "hiddenconcerts",
-  "routes": []
+  "routes": [
+    {
+      "type": "image",
+      "path": "/image/:uid"
+    }
+  ]
 }

@@ -1,4 +1,4 @@
-export type PageId = "home" | "dates" | "tickets" | "practical";
+export type PageId = "home" | "dates" | "tickets" | "practical" | "contact";
 
 export const contactEmail = "contact@hiddenconcerts.is";
 
@@ -6,9 +6,7 @@ export type ContentBlock =
   | { type: "paragraph"; text: string }
   | { type: "link"; before: string; linkText: string; href: string };
 
-export type NavItem =
-  | { id: PageId; label: string }
-  | { label: string; mailto: string };
+export type NavItem = { id: PageId; label: string };
 
 export type PageContent = {
   title: string;
@@ -20,7 +18,7 @@ export const navItems: NavItem[] = [
   { id: "dates", label: "Dates" },
   { id: "tickets", label: "Tickets" },
   { id: "practical", label: "Practical info" },
-  { label: "Contact", mailto: contactEmail },
+  { id: "contact", label: "Contact" },
 ];
 
 export const pageContent: Record<PageId, PageContent> = {
@@ -48,10 +46,7 @@ export const pageContent: Record<PageId, PageContent> = {
   dates: {
     title: "Dates",
     blocks: [
-      { type: "paragraph", text: "Next available dates" },
-      { type: "paragraph", text: "22. June 2026, 17:00" },
-      { type: "paragraph", text: "27. June 2026, 14:00" },
-      { type: "paragraph", text: "28. June 2026, 15:00" },
+      { type: "paragraph", text: "No upcoming dates yet. Check back soon." },
     ],
   },
   tickets: {
@@ -73,5 +68,9 @@ export const pageContent: Record<PageId, PageContent> = {
         text: "The Hidden Concert series is located in an old charming apartment close to Reykjavik city centre. It is on the second floor with no elevator. There is a maximum of 15 guests per concert.",
       },
     ],
+  },
+  contact: {
+    title: "Contact",
+    blocks: [],
   },
 };

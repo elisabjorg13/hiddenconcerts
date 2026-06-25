@@ -1,5 +1,13 @@
+import { createClient } from "@/prismicio";
 import HomePage from "./home-page";
 
-export default function Home() {
-  return <HomePage />;
+export const revalidate = 60;
+
+export default async function Page() {
+  const client = createClient();
+  const dates = await client
+    .getAllByType("date", { orderings: [{ field: "my.date.date" }] })
+    .catch(() => []);
+
+  return <HomePage dates={dates} />;
 }
